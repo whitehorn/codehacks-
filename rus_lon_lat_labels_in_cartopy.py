@@ -14,24 +14,28 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 
 
-def my_rus_lat_formatter(x, pos):
+def my_rus_lat_formatter(x, pos, deg_sign='\degree'):
     '''
     x - value
     pos - position
     '''
     print(x, pos)
     
+    deg_sign = '^\circ'
+    deg_sign='\degree'
+    
+    
     if x > 0:
-        pos = '{}$^\circ$c.ш.'.format(x)
+        pos = '{}${}$c.ш.'.format(x, deg_sign)
     elif x < 0:
-        pos = '{}$^\circ$ю.ш.'.format(abs(x))
+        pos = '{}${}$ю.ш.'.format(abs(x), deg_sign)
     elif x == 0:
-        pos = '{}$^\circ$'.format(x)
+        pos = '{}${}$'.format(x, deg_sign)
         
     return pos
 
 
-def my_rus_lon_formatter(x, pos):
+def my_rus_lon_formatter(x, pos, deg_sign='\degree'):
     '''
     x - value
     pos - position
@@ -39,11 +43,11 @@ def my_rus_lon_formatter(x, pos):
     print(x, pos)
     
     if x > 0:
-        pos = '{}$^\circ$в.д.'.format(x)
+        pos = '{}${}$в.д.'.format(x, deg_sign)
     elif x < 0:
-        pos = '{}$^\circ$з.д.'.format(abs(x))
+        pos = '{}${}$з.д.'.format(abs(x), deg_sign)
     elif x == 0:
-        pos = '{}$^\circ$'.format(x)
+        pos = '{}${}$'.format(x, deg_sign)
         
         
     return pos
